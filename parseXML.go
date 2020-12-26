@@ -61,7 +61,7 @@ func (d *Dependency) Modify() {
 func main() {
 
 	// Open our xmlFile
-	xmlFile, err := os.Open("pom.xml")
+	xmlFile, err := os.Open("pom")
 	// if we os.Open returns an error then handle it
 	if err != nil {
 		fmt.Println(err)

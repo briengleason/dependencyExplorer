@@ -6,6 +6,7 @@ import (
 	"io"
 	"io/ioutil"
 	"os"
+	"strings"
 )
 
 type Project struct {
@@ -51,6 +52,11 @@ type Dependency struct {
 	Scope string   `xml:"scope"`
 }
 
+func (d *Dependency) Modify() {
+	if strings.Contains(d.ArtifactId, "$") {
+		  
+	}
+}
 
 func main() {
 
@@ -67,12 +73,16 @@ func main() {
 	var project Project
 	xml.Unmarshal(byteValue, &project)
 
-	fmt.Println(project.Properties)
-
-	//for i, dependencies := 0, project.Dependencies; i < len(project.Dependencies); i++ {
-	//	fmt.Println("ArtifactId: " + dependencies[i].ArtifactId)
-	//	fmt.Println("GroupId: " + dependencies[i].GroupId)
-	//	fmt.Println("Version: " + dependencies[i].Version)
+	//for k := range project.Properties.Entries {
+	//	fmt.Printf("key[%s] value[%s]\n", k, m[k])
 	//}
+
+	//strings.Replace(myText, "Welcome", "Willkommen", -1)
+
+	for i, dependencies := 0, project.Dependencies; i < len(project.Dependencies); i++ {
+		fmt.Println("ArtifactId: " + dependencies[i].ArtifactId)
+		fmt.Println("GroupId: " + dependencies[i].GroupId)
+		fmt.Println("Version: " + dependencies[i].Version)
+	}
 
 }
